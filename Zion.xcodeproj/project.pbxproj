@@ -7,25 +7,35 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		603D3F03305D3853F94918D1 /* Pods_Zion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8246B2C223C4D76AD406911 /* Pods_Zion.framework */; };
+		8E64B57D2474C4A7007645AF /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E64B57C2474C4A7007645AF /* Episode.swift */; };
+		8E64B57F2474C4C1007645AF /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E64B57E2474C4C1007645AF /* Article.swift */; };
+		8E64B5812474C50A007645AF /* ContentEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E64B5802474C50A007645AF /* ContentEntry.swift */; };
 		8EA4AB68246A4E340016643A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA4AB67246A4E340016643A /* AppDelegate.swift */; };
 		8EA4AB6A246A4E340016643A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA4AB69246A4E340016643A /* SceneDelegate.swift */; };
-		8EA4AB6C246A4E340016643A /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA4AB6B246A4E340016643A /* MasterViewController.swift */; };
-		8EA4AB6E246A4E340016643A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA4AB6D246A4E340016643A /* DetailViewController.swift */; };
+		8EA4AB6C246A4E340016643A /* HomeMasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA4AB6B246A4E340016643A /* HomeMasterViewController.swift */; };
+		8EA4AB6E246A4E340016643A /* HomeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA4AB6D246A4E340016643A /* HomeDetailViewController.swift */; };
 		8EA4AB71246A4E340016643A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EA4AB6F246A4E340016643A /* Main.storyboard */; };
 		8EA4AB73246A4E360016643A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EA4AB72246A4E360016643A /* Assets.xcassets */; };
 		8EA4AB76246A4E360016643A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EA4AB74246A4E360016643A /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8E64B57C2474C4A7007645AF /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
+		8E64B57E2474C4C1007645AF /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
+		8E64B5802474C50A007645AF /* ContentEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentEntry.swift; sourceTree = "<group>"; };
 		8EA4AB64246A4E340016643A /* Zion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EA4AB67246A4E340016643A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8EA4AB69246A4E340016643A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		8EA4AB6B246A4E340016643A /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
-		8EA4AB6D246A4E340016643A /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		8EA4AB6B246A4E340016643A /* HomeMasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMasterViewController.swift; sourceTree = "<group>"; };
+		8EA4AB6D246A4E340016643A /* HomeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailViewController.swift; sourceTree = "<group>"; };
 		8EA4AB70246A4E340016643A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8EA4AB72246A4E360016643A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8EA4AB75246A4E360016643A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8EA4AB77246A4E360016643A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		97B081FA0955AD303DFC1307 /* Pods-Zion.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zion.debug.xcconfig"; path = "Target Support Files/Pods-Zion/Pods-Zion.debug.xcconfig"; sourceTree = "<group>"; };
+		D8246B2C223C4D76AD406911 /* Pods_Zion.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Zion.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E2E8106A93FB299A4DE17F4E /* Pods-Zion.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zion.release.xcconfig"; path = "Target Support Files/Pods-Zion/Pods-Zion.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +43,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				603D3F03305D3853F94918D1 /* Pods_Zion.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6800836FBC59C8DE945A495C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				97B081FA0955AD303DFC1307 /* Pods-Zion.debug.xcconfig */,
+				E2E8106A93FB299A4DE17F4E /* Pods-Zion.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		6E7F5FD2DFE387BB9A556331 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D8246B2C223C4D76AD406911 /* Pods_Zion.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		8EA4AB5B246A4E340016643A = {
 			isa = PBXGroup;
 			children = (
 				8EA4AB66246A4E340016643A /* Zion */,
 				8EA4AB65246A4E340016643A /* Products */,
+				6800836FBC59C8DE945A495C /* Pods */,
+				6E7F5FD2DFE387BB9A556331 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,12 +91,15 @@
 			children = (
 				8EA4AB67246A4E340016643A /* AppDelegate.swift */,
 				8EA4AB69246A4E340016643A /* SceneDelegate.swift */,
-				8EA4AB6B246A4E340016643A /* MasterViewController.swift */,
-				8EA4AB6D246A4E340016643A /* DetailViewController.swift */,
+				8EA4AB6B246A4E340016643A /* HomeMasterViewController.swift */,
+				8EA4AB6D246A4E340016643A /* HomeDetailViewController.swift */,
 				8EA4AB6F246A4E340016643A /* Main.storyboard */,
 				8EA4AB72246A4E360016643A /* Assets.xcassets */,
 				8EA4AB74246A4E360016643A /* LaunchScreen.storyboard */,
 				8EA4AB77246A4E360016643A /* Info.plist */,
+				8E64B57C2474C4A7007645AF /* Episode.swift */,
+				8E64B57E2474C4C1007645AF /* Article.swift */,
+				8E64B5802474C50A007645AF /* ContentEntry.swift */,
 			);
 			path = Zion;
 			sourceTree = "<group>";
@@ -77,9 +111,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8EA4AB7A246A4E360016643A /* Build configuration list for PBXNativeTarget "Zion" */;
 			buildPhases = (
+				8573262B8A60AE8607CA849A /* [CP] Check Pods Manifest.lock */,
 				8EA4AB60246A4E340016643A /* Sources */,
 				8EA4AB61246A4E340016643A /* Frameworks */,
 				8EA4AB62246A4E340016643A /* Resources */,
+				C6EB2058BA3F390B43F437E9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -136,15 +172,60 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		8573262B8A60AE8607CA849A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Zion-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C6EB2058BA3F390B43F437E9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Zion/Pods-Zion-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Zion/Pods-Zion-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Zion/Pods-Zion-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		8EA4AB60246A4E340016643A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				8EA4AB68246A4E340016643A /* AppDelegate.swift in Sources */,
+				8E64B5812474C50A007645AF /* ContentEntry.swift in Sources */,
+				8E64B57D2474C4A7007645AF /* Episode.swift in Sources */,
+				8E64B57F2474C4C1007645AF /* Article.swift in Sources */,
 				8EA4AB6A246A4E340016643A /* SceneDelegate.swift in Sources */,
-				8EA4AB6C246A4E340016643A /* MasterViewController.swift in Sources */,
-				8EA4AB6E246A4E340016643A /* DetailViewController.swift in Sources */,
+				8EA4AB6C246A4E340016643A /* HomeMasterViewController.swift in Sources */,
+				8EA4AB6E246A4E340016643A /* HomeDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,6 +367,7 @@
 		};
 		8EA4AB7B246A4E360016643A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 97B081FA0955AD303DFC1307 /* Pods-Zion.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -303,6 +385,7 @@
 		};
 		8EA4AB7C246A4E360016643A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E2E8106A93FB299A4DE17F4E /* Pods-Zion.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
