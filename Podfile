@@ -8,5 +8,6 @@ target 'Zion' do
   # Pods for Zion
   pod 'Firebase/Firestore'
   pod 'Firebase/Auth'
+  pod 'FeedKit', '~> 9.0'
 
 end
