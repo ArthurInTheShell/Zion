@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import FeedKit
+
+let feedURL = URL(string: "https://hnrss.org/frontpage")!
 
 class MasterViewController: UITableViewController {
 
@@ -14,14 +17,50 @@ class MasterViewController: UITableViewController {
     var contentEntries = [ContentEntry]()
     let entryCellIdentifier = "EntryCell"
 
-
+    let parser = FeedParser(URL: feedURL)
+    
+    var rssFeed: RSSFeed?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        self.title = "Feed"
+        
+        // Parse asynchronously, not to block the UI.
+        parser.parseAsync { [weak self] (result) in
+            guard let self = self else { return }
+            switch result {
+            case .success(let feed):
+                // Grab the parsed feed directly as an optional rss, atom or json feed object
+                self.rssFeed = feed.rssFeed
+                
+                self.rssFeed!.items?.forEach({ (rssFeedItem) in
+                    self.contentEntries.append(ContentEntry(withRSSFeedItem: rssFeedItem))
+                })
+                
+                // Or alternatively...
+                //
+                // switch feed {
+                // case let .rss(feed): break
+                // case let .atom(feed): break
+                // case let .json(feed): break
+                // }
+                
+                // Then back to the Main thread to update the UI.
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+                
+            case .failure(let error):
+                print(error)
+            }
+        }
+        
         navigationItem.leftBarButtonItem = editButtonItem
 
-        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(insertNewObject(_:)))
-        navigationItem.rightBarButtonItem = addButton
+//        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(insertNewObject(_:)))
+//        navigationItem.rightBarButtonItem = addButton
         if let split = splitViewController {
             let controllers = split.viewControllers
             detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
@@ -33,12 +72,12 @@ class MasterViewController: UITableViewController {
         super.viewWillAppear(animated)
     }
 
-    @objc
-    func insertNewObject(_ sender: Any) {
-        contentEntries.insert(Article(), at: 0)
-        let indexPath = IndexPath(row: 0, section: 0)
-        tableView.insertRows(at: [indexPath], with: .automatic)
-    }
+//    @objc
+//    func insertNewObject(_ sender: Any) {
+//        contentEntries.insert(Article(), at: 0)
+//        let indexPath = IndexPath(row: 0, section: 0)
+//        tableView.insertRows(at: [indexPath], with: .automatic)
+//    }
 
     // MARK: - Segues
 

@@ -7,10 +7,22 @@
 //
 
 import Foundation
+import FeedKit
 
 class ContentEntry {
+
+    var item : RSSFeedItem
+    
+    init( withRSSFeedItem item :RSSFeedItem ) {
+        self.item = item
+    }
+
     
     func getTitle() -> String {
-        return "Title"
+        return item.title!
+    }
+    
+    func getDescription() -> String {
+        return item.description!
     }
 }
