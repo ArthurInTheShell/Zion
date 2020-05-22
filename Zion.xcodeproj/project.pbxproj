@@ -16,9 +16,13 @@
 		8EA4AB6A246A4E340016643A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA4AB69246A4E340016643A /* SceneDelegate.swift */; };
 		8EA4AB6C246A4E340016643A /* HomeMasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA4AB6B246A4E340016643A /* HomeMasterViewController.swift */; };
 		8EA4AB6E246A4E340016643A /* HomeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA4AB6D246A4E340016643A /* HomeDetailViewController.swift */; };
-		8EA4AB71246A4E340016643A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EA4AB6F246A4E340016643A /* Main.storyboard */; };
 		8EA4AB73246A4E360016643A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EA4AB72246A4E360016643A /* Assets.xcassets */; };
 		8EA4AB76246A4E360016643A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EA4AB74246A4E360016643A /* LaunchScreen.storyboard */; };
+		9B15481124756D9B0043FFE4 /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B15481024756D9B0043FFE4 /* MeViewController.swift */; };
+		9B15481424771AED0043FFE4 /* ManageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B15481324771AED0043FFE4 /* ManageViewController.swift */; };
+		9B1F39432474DAE3008191E0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1F39422474DAE3008191E0 /* LoginViewController.swift */; };
+		9B214C7F2474D41800162ED1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9B214C7E2474D41800162ED1 /* GoogleService-Info.plist */; };
+		9BE6C3232478982300D351FC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BE6C3222478982300D351FC /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,11 +35,15 @@
 		8EA4AB69246A4E340016643A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		8EA4AB6B246A4E340016643A /* HomeMasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMasterViewController.swift; sourceTree = "<group>"; };
 		8EA4AB6D246A4E340016643A /* HomeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailViewController.swift; sourceTree = "<group>"; };
-		8EA4AB70246A4E340016643A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8EA4AB72246A4E360016643A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8EA4AB75246A4E360016643A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8EA4AB77246A4E360016643A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		97B081FA0955AD303DFC1307 /* Pods-Zion.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zion.debug.xcconfig"; path = "Target Support Files/Pods-Zion/Pods-Zion.debug.xcconfig"; sourceTree = "<group>"; };
+		9B15481024756D9B0043FFE4 /* MeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
+		9B15481324771AED0043FFE4 /* ManageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageViewController.swift; sourceTree = "<group>"; };
+		9B1F39422474DAE3008191E0 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		9B214C7E2474D41800162ED1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9BE6C3222478982300D351FC /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		D8246B2C223C4D76AD406911 /* Pods_Zion.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Zion.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2E8106A93FB299A4DE17F4E /* Pods-Zion.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zion.release.xcconfig"; path = "Target Support Files/Pods-Zion/Pods-Zion.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -90,18 +98,22 @@
 		8EA4AB66246A4E340016643A /* Zion */ = {
 			isa = PBXGroup;
 			children = (
+				9B214C7E2474D41800162ED1 /* GoogleService-Info.plist */,
 				8EA4AB67246A4E340016643A /* AppDelegate.swift */,
 				8EA4AB69246A4E340016643A /* SceneDelegate.swift */,
 				8EA4AB6B246A4E340016643A /* HomeMasterViewController.swift */,
 				8EA4AB6D246A4E340016643A /* HomeDetailViewController.swift */,
-				8EA4AB6F246A4E340016643A /* Main.storyboard */,
 				8EA4AB72246A4E360016643A /* Assets.xcassets */,
 				8EA4AB74246A4E360016643A /* LaunchScreen.storyboard */,
 				8EA4AB77246A4E360016643A /* Info.plist */,
 				8E64B57C2474C4A7007645AF /* Episode.swift */,
 				8E64B57E2474C4C1007645AF /* Article.swift */,
 				8E64B5802474C50A007645AF /* ContentEntry.swift */,
+				9B1F39422474DAE3008191E0 /* LoginViewController.swift */,
+				9B15481024756D9B0043FFE4 /* MeViewController.swift */,
+				9B15481324771AED0043FFE4 /* ManageViewController.swift */,
 				8E8EAE0B24786BEA00F17986 /* HomeSplitViewController.swift */,
+				9BE6C3222478982300D351FC /* Main.storyboard */,
 			);
 			path = Zion;
 			sourceTree = "<group>";
@@ -167,8 +179,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				8EA4AB76246A4E360016643A /* LaunchScreen.storyboard in Resources */,
+				9BE6C3232478982300D351FC /* Main.storyboard in Resources */,
+				9B214C7F2474D41800162ED1 /* GoogleService-Info.plist in Resources */,
 				8EA4AB73246A4E360016643A /* Assets.xcassets in Resources */,
-				8EA4AB71246A4E340016643A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,7 +234,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B15481124756D9B0043FFE4 /* MeViewController.swift in Sources */,
+				9B1F39432474DAE3008191E0 /* LoginViewController.swift in Sources */,
 				8EA4AB68246A4E340016643A /* AppDelegate.swift in Sources */,
+				9B15481424771AED0043FFE4 /* ManageViewController.swift in Sources */,
 				8E64B5812474C50A007645AF /* ContentEntry.swift in Sources */,
 				8E64B57D2474C4A7007645AF /* Episode.swift in Sources */,
 				8E64B57F2474C4C1007645AF /* Article.swift in Sources */,
@@ -235,14 +251,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		8EA4AB6F246A4E340016643A /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8EA4AB70246A4E340016643A /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		8EA4AB74246A4E360016643A /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -375,6 +383,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Zion/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -393,6 +402,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Zion/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
