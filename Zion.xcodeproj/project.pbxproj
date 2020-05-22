@@ -11,6 +11,7 @@
 		8E64B57D2474C4A7007645AF /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E64B57C2474C4A7007645AF /* Episode.swift */; };
 		8E64B57F2474C4C1007645AF /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E64B57E2474C4C1007645AF /* Article.swift */; };
 		8E64B5812474C50A007645AF /* ContentEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E64B5802474C50A007645AF /* ContentEntry.swift */; };
+		8E8EAE0C24786BEA00F17986 /* HomeSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8EAE0B24786BEA00F17986 /* HomeSplitViewController.swift */; };
 		8EA4AB68246A4E340016643A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA4AB67246A4E340016643A /* AppDelegate.swift */; };
 		8EA4AB6A246A4E340016643A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA4AB69246A4E340016643A /* SceneDelegate.swift */; };
 		8EA4AB6C246A4E340016643A /* HomeMasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA4AB6B246A4E340016643A /* HomeMasterViewController.swift */; };
@@ -24,6 +25,7 @@
 		8E64B57C2474C4A7007645AF /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
 		8E64B57E2474C4C1007645AF /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		8E64B5802474C50A007645AF /* ContentEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentEntry.swift; sourceTree = "<group>"; };
+		8E8EAE0B24786BEA00F17986 /* HomeSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSplitViewController.swift; sourceTree = "<group>"; };
 		8EA4AB64246A4E340016643A /* Zion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EA4AB67246A4E340016643A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8EA4AB69246A4E340016643A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 				8E64B57C2474C4A7007645AF /* Episode.swift */,
 				8E64B57E2474C4C1007645AF /* Article.swift */,
 				8E64B5802474C50A007645AF /* ContentEntry.swift */,
+				8E8EAE0B24786BEA00F17986 /* HomeSplitViewController.swift */,
 			);
 			path = Zion;
 			sourceTree = "<group>";
@@ -222,6 +225,7 @@
 				8E64B5812474C50A007645AF /* ContentEntry.swift in Sources */,
 				8E64B57D2474C4A7007645AF /* Episode.swift in Sources */,
 				8E64B57F2474C4C1007645AF /* Article.swift in Sources */,
+				8E8EAE0C24786BEA00F17986 /* HomeSplitViewController.swift in Sources */,
 				8EA4AB6A246A4E340016643A /* SceneDelegate.swift in Sources */,
 				8EA4AB6C246A4E340016643A /* HomeMasterViewController.swift in Sources */,
 				8EA4AB6E246A4E340016643A /* HomeDetailViewController.swift in Sources */,
