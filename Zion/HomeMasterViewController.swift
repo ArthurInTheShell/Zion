@@ -9,11 +9,11 @@
 import UIKit
 import FeedKit
 
-let feedURL = URL(string: "https://hnrss.org/frontpage")!
+let feedURL = URL(string: "https://podcast.weareones.com/rss")!
 
-class MasterViewController: UITableViewController {
+class HomeMasterViewController: UITableViewController {
 
-    var detailViewController: DetailViewController? = nil
+    var detailViewController: HomeDetailViewController? = nil
     var contentEntries = [ContentEntry]()
     let entryCellIdentifier = "EntryCell"
 
@@ -63,7 +63,7 @@ class MasterViewController: UITableViewController {
 //        navigationItem.rightBarButtonItem = addButton
         if let split = splitViewController {
             let controllers = split.viewControllers
-            detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
+            detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? HomeDetailViewController
         }
     }
 
@@ -85,7 +85,7 @@ class MasterViewController: UITableViewController {
         if segue.identifier == "showDetail" {
             if let indexPath = tableView.indexPathForSelectedRow {
                 let object = contentEntries[indexPath.row]
-                let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
+                let controller = (segue.destination as! UINavigationController).topViewController as! HomeDetailViewController
                 controller.entry = object
                 controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
                 controller.navigationItem.leftItemsSupplementBackButton = true
@@ -95,6 +95,10 @@ class MasterViewController: UITableViewController {
     }
 
     // MARK: - Table View
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -108,6 +112,20 @@ class MasterViewController: UITableViewController {
         let cell : EntryCell = tableView.dequeueReusableCell(withIdentifier: entryCellIdentifier, for: indexPath) as! EntryCell
         let object = contentEntries[indexPath.row]
         cell.titleTextView!.text = object.getTitle()
+        if let imgString = object.getiTunesImage(){
+            if let imgUrl = URL(string: imgString) {
+                DispatchQueue.global().async { // Download in the background
+                do {
+                    let data = try Data(contentsOf: imgUrl)
+                    DispatchQueue.main.async { // Then update on main thread
+                        cell.previewImageView.image = UIImage(data: data)
+                }
+                } catch {
+                    print("Error downloading image: \(error)")
+                }
+                }
+            }
+        }
         return cell
     }
 
@@ -130,7 +148,7 @@ class MasterViewController: UITableViewController {
 // MARK: - Custom Cell
 class EntryCell : UITableViewCell{
     @IBOutlet weak var titleTextView: UILabel!
-    @IBOutlet weak var previewImageView: UIView!
+    @IBOutlet weak var previewImageView: UIImageView!
     
     
 }

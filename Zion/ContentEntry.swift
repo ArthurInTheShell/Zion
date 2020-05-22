@@ -25,4 +25,12 @@ class ContentEntry {
     func getDescription() -> String {
         return item.description!
     }
+    
+    func getiTunesImage() -> String?{
+        let imgString = item.iTunes?.iTunesImage?.attributes?.href
+        if let imgString = imgString{
+            return imgString
+        }
+        return nil
+    }
 }

@@ -8,16 +8,18 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
+class HomeDetailViewController: UIViewController {
 
-    @IBOutlet weak var detailDescriptionLabel: UILabel!
+    @IBOutlet weak var detailContentLabel: UILabel!
 
 
     func configureView() {
         // Update the user interface for the detail item.
         if let entry = entry{
-            if let label = detailDescriptionLabel {
-                label.text = entry.getTitle()
+            if let label = detailContentLabel {
+                label.numberOfLines = 0
+                label.text = entry.getDescription()
+                
             }
         }
         
