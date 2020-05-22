@@ -132,6 +132,7 @@ class HomeMasterViewController: UITableViewController {
 class EntryCell : UITableViewCell{
     @IBOutlet weak var titleTextView: UILabel!
     @IBOutlet weak var previewImageView: UIImageView!
+    @IBOutlet weak var leftSuperViewContraint: NSLayoutConstraint!
     
     var contentEntry : ContentEntry!{
         didSet{
@@ -142,6 +143,7 @@ class EntryCell : UITableViewCell{
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        leftSuperViewContraint.constant = 116
     }
     
     func fetchContent(){
@@ -149,17 +151,10 @@ class EntryCell : UITableViewCell{
         if let imgString = contentEntry.getiTunesImage(){
             if let imgUrl = URL(string: imgString) {
                 previewImageView.af.setImage(withURL: imgUrl)
-//                DispatchQueue.global().async { // Download in the background
-//                    do {
-//                        let data = try Data(contentsOf: imgUrl)
-//                        DispatchQueue.main.async { // Then update on main thread
-//                            self.previewImageView.image = UIImage(data: data)
-//                        }
-//                    } catch {
-//                        print("Error downloading image: \(error)")
-//                    }
-//                }
             }
+        }else{
+//            self.titleTextView.frame.origin.x = 0
+            leftSuperViewContraint.constant = 16
         }
     }
     
