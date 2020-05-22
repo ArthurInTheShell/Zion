@@ -8,6 +8,8 @@
 
 import UIKit
 import FeedKit
+import Alamofire
+import AlamofireImage
 
 let feedURL = URL(string: "https://podcast.weareones.com/rss")!
 
@@ -146,16 +148,17 @@ class EntryCell : UITableViewCell{
         self.titleTextView!.text = contentEntry.getTitle()
         if let imgString = contentEntry.getiTunesImage(){
             if let imgUrl = URL(string: imgString) {
-                DispatchQueue.global().async { // Download in the background
-                    do {
-                        let data = try Data(contentsOf: imgUrl)
-                        DispatchQueue.main.async { // Then update on main thread
-                            self.previewImageView.image = UIImage(data: data)
-                        }
-                    } catch {
-                        print("Error downloading image: \(error)")
-                    }
-                }
+                previewImageView.af.setImage(withURL: imgUrl)
+//                DispatchQueue.global().async { // Download in the background
+//                    do {
+//                        let data = try Data(contentsOf: imgUrl)
+//                        DispatchQueue.main.async { // Then update on main thread
+//                            self.previewImageView.image = UIImage(data: data)
+//                        }
+//                    } catch {
+//                        print("Error downloading image: \(error)")
+//                    }
+//                }
             }
         }
     }

@@ -9,5 +9,6 @@ target 'Zion' do
   pod 'Firebase/Firestore'
   pod 'Firebase/Auth'
   pod 'FeedKit', '~> 9.0'
+  pod 'AlamofireImage', '~> 4.1'
 
 end
