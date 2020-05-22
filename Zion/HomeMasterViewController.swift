@@ -16,8 +16,9 @@ class HomeMasterViewController: UITableViewController {
     var detailViewController: HomeDetailViewController? = nil
     var contentEntries = [ContentEntry]()
     let entryCellIdentifier = "EntryCell"
-
-    let parser = FeedParser(URL: feedURL)
+    let feedURLStrings = ["https://podcast.weareones.com/rss":"podcast",
+                          "https://feeds.a.dj.com/rss/RSSWorldNews.xml":"news"]
+//    var parser = FeedParser(URL: feedURL)
     
     var rssFeed: RSSFeed?
     
@@ -27,40 +28,10 @@ class HomeMasterViewController: UITableViewController {
         
         self.title = "Feed"
         
-        // Parse asynchronously, not to block the UI.
-        parser.parseAsync { [weak self] (result) in
-            guard let self = self else { return }
-            switch result {
-            case .success(let feed):
-                // Grab the parsed feed directly as an optional rss, atom or json feed object
-                self.rssFeed = feed.rssFeed
-                
-                self.rssFeed!.items?.forEach({ (rssFeedItem) in
-                    self.contentEntries.append(ContentEntry(withRSSFeedItem: rssFeedItem))
-                })
-                
-                // Or alternatively...
-                //
-                // switch feed {
-                // case let .rss(feed): break
-                // case let .atom(feed): break
-                // case let .json(feed): break
-                // }
-                
-                // Then back to the Main thread to update the UI.
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
-                
-            case .failure(let error):
-                print(error)
-            }
-        }
+        
+        
         
         navigationItem.leftBarButtonItem = editButtonItem
-
-//        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(insertNewObject(_:)))
-//        navigationItem.rightBarButtonItem = addButton
         if let split = splitViewController {
             let controllers = split.viewControllers
             detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? HomeDetailViewController
@@ -70,14 +41,39 @@ class HomeMasterViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         clearsSelectionOnViewWillAppear = splitViewController!.isCollapsed
         super.viewWillAppear(animated)
+        // Parse asynchronously, not to block the UI.
+        feedURLStrings.forEach { (arg0) in
+            
+            let (keyURLString, type) = arg0
+            let parser = FeedParser(URL: URL(string : keyURLString)!)
+            parser.parseAsync { [weak self] (result) in
+                guard let self = self else { return }
+                switch result {
+                case .success(let feed):
+                    // Grab the parsed feed directly as an optional rss, atom or json feed object
+                    self.rssFeed = feed.rssFeed
+                    if( type == "news"){
+                        self.rssFeed!.items?.forEach({ (rssFeedItem) in
+                            self.contentEntries.append(Article(withRSSFeedItem: rssFeedItem))
+                        })
+                    }else{
+                        self.rssFeed!.items?.forEach({ (rssFeedItem) in
+                            self.contentEntries.append(Episode(withRSSFeedItem: rssFeedItem))
+                        })
+                    }
+                    
+                    // Then back to the Main thread to update the UI.
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
+                    
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        }
+        
     }
-
-//    @objc
-//    func insertNewObject(_ sender: Any) {
-//        contentEntries.insert(Article(), at: 0)
-//        let indexPath = IndexPath(row: 0, section: 0)
-//        tableView.insertRows(at: [indexPath], with: .automatic)
-//    }
 
     // MARK: - Segues
 
