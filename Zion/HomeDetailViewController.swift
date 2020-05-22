@@ -8,18 +8,21 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
+class HomeDetailViewController: UIViewController {
 
-    @IBOutlet weak var detailDescriptionLabel: UILabel!
+    @IBOutlet weak var detailContentLabel: UILabel!
 
 
     func configureView() {
         // Update the user interface for the detail item.
-        if let detail = detailItem {
-            if let label = detailDescriptionLabel {
-                label.text = detail.description
+        if let entry = entry{
+            if let label = detailContentLabel {
+                label.numberOfLines = 0
+                label.text = entry.getDescription()
+                
             }
         }
+        
     }
 
     override func viewDidLoad() {
@@ -28,7 +31,7 @@ class DetailViewController: UIViewController {
         configureView()
     }
 
-    var detailItem: NSDate? {
+    var entry: ContentEntry? {
         didSet {
             // Update the view.
             configureView()

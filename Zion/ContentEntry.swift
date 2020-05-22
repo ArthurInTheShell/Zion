@@ -7,10 +7,30 @@
 //
 
 import Foundation
+import FeedKit
 
 class ContentEntry {
+
+    var item : RSSFeedItem
+    
+    init( withRSSFeedItem item :RSSFeedItem ) {
+        self.item = item
+    }
+
     
     func getTitle() -> String {
-        return "Title"
+        return item.title!
+    }
+    
+    func getDescription() -> String {
+        return item.description!
+    }
+    
+    func getiTunesImage() -> String?{
+        let imgString = item.iTunes?.iTunesImage?.attributes?.href
+        if let imgString = imgString{
+            return imgString
+        }
+        return nil
     }
 }
