@@ -8,6 +8,8 @@
 
 import UIKit
 import FeedKit
+import Alamofire
+import AlamofireImage
 
 let feedURL = URL(string: "https://podcast.weareones.com/rss")!
 
@@ -106,22 +108,7 @@ class HomeMasterViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell : EntryCell = tableView.dequeueReusableCell(withIdentifier: entryCellIdentifier, for: indexPath) as! EntryCell
-        let object = contentEntries[indexPath.row]
-        cell.titleTextView!.text = object.getTitle()
-        if let imgString = object.getiTunesImage(){
-            if let imgUrl = URL(string: imgString) {
-                DispatchQueue.global().async { // Download in the background
-                do {
-                    let data = try Data(contentsOf: imgUrl)
-                    DispatchQueue.main.async { // Then update on main thread
-                        cell.previewImageView.image = UIImage(data: data)
-                }
-                } catch {
-                    print("Error downloading image: \(error)")
-                }
-                }
-            }
-        }
+        cell.contentEntry = contentEntries[indexPath.row]
         return cell
     }
 
@@ -145,6 +132,30 @@ class HomeMasterViewController: UITableViewController {
 class EntryCell : UITableViewCell{
     @IBOutlet weak var titleTextView: UILabel!
     @IBOutlet weak var previewImageView: UIImageView!
+    @IBOutlet weak var leftSuperViewContraint: NSLayoutConstraint!
     
+    var contentEntry : ContentEntry!{
+        didSet{
+            self.previewImageView.image = nil
+            fetchContent()
+        }
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        leftSuperViewContraint.constant = 116
+    }
+    
+    func fetchContent(){
+        self.titleTextView!.text = contentEntry.getTitle()
+        if let imgString = contentEntry.getiTunesImage(){
+            if let imgUrl = URL(string: imgString) {
+                previewImageView.af.setImage(withURL: imgUrl)
+            }
+        }else{
+//            self.titleTextView.frame.origin.x = 0
+            leftSuperViewContraint.constant = 16
+        }
+    }
     
 }
