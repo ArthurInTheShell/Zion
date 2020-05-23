@@ -12,9 +12,11 @@ import FeedKit
 class ContentEntry {
 
     var item : RSSFeedItem
+    var source : String
     
-    init( withRSSFeedItem item :RSSFeedItem ) {
+    init( withRSSFeedItem item :RSSFeedItem, fromRSSSource source : String) {
         self.item = item
+        self.source = source
     }
 
     

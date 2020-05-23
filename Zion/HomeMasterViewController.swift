@@ -61,11 +61,11 @@ class HomeMasterViewController: UITableViewController {
                             let feedProperty = value as! Dictionary<String,AnyObject>
                             if( feedProperty["type"] as! String == "news"){
                                 self.rssFeed!.items?.forEach({ (rssFeedItem) in
-                                    self.contentEntries.append(Article(withRSSFeedItem: rssFeedItem))
+                                    self.contentEntries.append(Article(withRSSFeedItem: rssFeedItem, fromRSSSource: keyURLString))
                                 })
                             }else{
                                 self.rssFeed!.items?.forEach({ (rssFeedItem) in
-                                    self.contentEntries.append(Episode(withRSSFeedItem: rssFeedItem))
+                                    self.contentEntries.append(Episode(withRSSFeedItem: rssFeedItem, fromRSSSource: keyURLString))
                                 })
                             }
                             
@@ -105,7 +105,21 @@ class HomeMasterViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
             if let indexPath = tableView.indexPathForSelectedRow {
+                
                 let object = contentEntries[indexPath.row]
+                self.feedDocRef.getDocument { (document, error) in
+                    if let error = error {
+                        print("Retrieve feed url error \(error)")
+                        return
+                    }
+                    
+                    if let document = document{
+                        var data = document.data()![object.source] as! Dictionary<String,AnyObject>
+                        data["count"] = data["count"] as! Int + 1 as AnyObject
+                        self.feedDocRef.setData([object.source: data], merge : true)
+                    }
+                }
+
                 let controller = (segue.destination as! UINavigationController).topViewController as! HomeDetailViewController
                 controller.entry = object
                 controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
