@@ -49,6 +49,7 @@ class HomeMasterViewController: UITableViewController {
                 return
             }
             if let documentSnapshot = documentSnapshot{
+                self.contentEntries.removeAll()
                 documentSnapshot.data()?.forEach({ (arg0) in
                     let (keyURLString, value) = arg0
                     let parser = FeedParser(URL: URL(string : keyURLString)!)
