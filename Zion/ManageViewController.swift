@@ -31,7 +31,6 @@ class ManageViewController: UITableViewController{
                         snapShot.data()!.forEach({ (data) in
                             let url = data.key
                             let info = data.value as! Dictionary<String, Any>
-                            print(data)
                             self.feedList.append(Feed(url: url, name: info["name"] as! String, count: info["count"] as! Int, type: info["type"] as! String))
                         })
                         self.tableView.reloadData()
@@ -64,7 +63,7 @@ class ManageViewController: UITableViewController{
             let name = nameTextField.text!
             let type = typeTextField.text!
             self.feedRef.document(uid).setData(["\(url)" : [
-                "name": name, "count": 0], "type": type], merge: true)
+                "name": name, "count": 0,  "type": type]], merge: true)
         }))
         present(alertController, animated: true, completion: nil)
     }
@@ -88,8 +87,7 @@ class ManageViewController: UITableViewController{
         if editingStyle == .delete {
             let feedToDelete = feedList[indexPath.row]
             let uid = Auth.auth().currentUser!.uid
-            print(feedToDelete.url)
-            feedRef.document(uid).updateData([feedToDelete.url: FieldValue.delete()])
+            feedRef.document(uid).setData([feedToDelete.url: FieldValue.delete()], merge: true)
         }
     }
     
