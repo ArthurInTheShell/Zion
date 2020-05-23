@@ -10,17 +10,16 @@ import UIKit
 import FeedKit
 import Alamofire
 import AlamofireImage
-
-let feedURL = URL(string: "https://podcast.weareones.com/rss")!
+import FirebaseFirestore
+import FirebaseAuth
 
 class HomeMasterViewController: UITableViewController {
 
     var detailViewController: HomeDetailViewController? = nil
     var contentEntries = [ContentEntry]()
     let entryCellIdentifier = "EntryCell"
-    let feedURLStrings = ["https://podcast.weareones.com/rss":"podcast",
-                          "https://feeds.a.dj.com/rss/RSSWorldNews.xml":"news"]
-//    var parser = FeedParser(URL: feedURL)
+    var feedDocRef : DocumentReference!
+    var feedListener : ListenerRegistration!
     
     var rssFeed: RSSFeed?
     
@@ -40,41 +39,65 @@ class HomeMasterViewController: UITableViewController {
         }
     }
 
+    fileprivate func startListening() {
+        if(feedListener != nil){
+            feedListener.remove()
+        }
+        feedListener = feedDocRef.addSnapshotListener({ (documentSnapshot, error) in
+            if let error = error {
+                print("Error getting feeds \(error)")
+                return
+            }
+            if let documentSnapshot = documentSnapshot{
+                documentSnapshot.data()?.forEach({ (arg0) in
+                    let (keyURLString, value) = arg0
+                    let parser = FeedParser(URL: URL(string : keyURLString)!)
+                    parser.parseAsync { [weak self] (result) in
+                        guard let self = self else { return }
+                        switch result {
+                        case .success(let feed):
+                            // Grab the parsed feed directly as an optional rss, atom or json feed object
+                            self.rssFeed = feed.rssFeed
+                            let feedProperty = value as! Dictionary<String,AnyObject>
+                            if( feedProperty["type"] as! String == "news"){
+                                self.rssFeed!.items?.forEach({ (rssFeedItem) in
+                                    self.contentEntries.append(Article(withRSSFeedItem: rssFeedItem))
+                                })
+                            }else{
+                                self.rssFeed!.items?.forEach({ (rssFeedItem) in
+                                    self.contentEntries.append(Episode(withRSSFeedItem: rssFeedItem))
+                                })
+                            }
+                            
+                            // Then back to the Main thread to update the UI.
+                            DispatchQueue.main.async {
+                                self.tableView.reloadData()
+                            }
+                            
+                        case .failure(let error):
+                            print(error)
+                        }
+                    }
+                })
+                
+            }
+            
+        })
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         clearsSelectionOnViewWillAppear = splitViewController!.isCollapsed
         super.viewWillAppear(animated)
-        // Parse asynchronously, not to block the UI.
-        feedURLStrings.forEach { (arg0) in
-            
-            let (keyURLString, type) = arg0
-            let parser = FeedParser(URL: URL(string : keyURLString)!)
-            parser.parseAsync { [weak self] (result) in
-                guard let self = self else { return }
-                switch result {
-                case .success(let feed):
-                    // Grab the parsed feed directly as an optional rss, atom or json feed object
-                    self.rssFeed = feed.rssFeed
-                    if( type == "news"){
-                        self.rssFeed!.items?.forEach({ (rssFeedItem) in
-                            self.contentEntries.append(Article(withRSSFeedItem: rssFeedItem))
-                        })
-                    }else{
-                        self.rssFeed!.items?.forEach({ (rssFeedItem) in
-                            self.contentEntries.append(Episode(withRSSFeedItem: rssFeedItem))
-                        })
-                    }
-                    
-                    // Then back to the Main thread to update the UI.
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                    }
-                    
-                case .failure(let error):
-                    print(error)
-                }
-            }
-        }
         
+        feedDocRef = Firestore.firestore().collection("ZionFeed").document(Auth.auth().currentUser!.uid)
+        
+        startListening()
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        feedListener.remove()
     }
 
     // MARK: - Segues
